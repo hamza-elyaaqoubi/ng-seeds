@@ -10,7 +10,8 @@
             // routes
             $routeProvider
                 .when("/", {
-                    templateUrl: "./partials/home.html"
+                    templateUrl: "./partials/home.html",
+                    controller: "HomeController"
                 })
                 .when("/page1", {
                     templateUrl: "./partials/page1.html",
@@ -32,6 +33,13 @@
 
     //Load controller
     angular.module('mySeedsNG')
+        .controller('HomeController', ['$scope', '$http', function($scope, $http) {
+            $http.get('http://localhost:9000/back-api/version').then(function (response) {
+                $scope.apiVersion = response.data;
+            }, errorCallback);
+            $scope.data = "Home page is loaded !!!";
+        }
+        ])
         .controller('Page1Controller', ['$scope', function($scope) {
                 $scope.data = "Page 1 is loaded !!!";
             }
@@ -44,4 +52,10 @@
             $scope.data = "Page not found !!!";
         }
         ]);
+    var successCallback = function ($scope, data) {
+        $scope.data = data;
+    };
+    var errorCallback = function () {
+        alert('An error was occurred !!');
+    };
 }());

@@ -9,7 +9,6 @@ var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 var historyApiFallback = require('connect-history-api-fallback');
-var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
 
 // tasks
@@ -22,8 +21,6 @@ gulp.task('lint', function() {
 
 gulp.task('clean', function() {
     gulp.src('./dist/*')
-        .pipe(clean({force: true}));
-    gulp.src('./app/js/bundled.js')
         .pipe(clean({force: true}));
 });
 
@@ -73,19 +70,9 @@ gulp.task('connectDist', function () {
     });
 });
 
-gulp.task('browserify', function() {
-    gulp.src(['app/js/main.js'])
-        .pipe(browserify({
-            insertGlobals: true,
-            debug: true
-        }))
-        .pipe(concat('bundled.js'))
-        .pipe(gulp.dest('./app/js'))
-});
-
 // default task
 gulp.task('default',
-    ['clean', 'lint', 'browserify', 'connect']
+    ['clean', 'lint', 'connect']
 );
 
 gulp.task('build', function() {
