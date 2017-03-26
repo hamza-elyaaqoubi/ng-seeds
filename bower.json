@@ -1,0 +1,29 @@
+{
+  "name": "my-ng-seeds",
+  "description": "TBD",
+  "main": "gulpfile.js",
+  "authors": [
+    "Hamza EL YAAQOUBI"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ng-seeds"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-animate": "^1.6.3",
+    "angular-route": "^1.6.3",
+    "jquery": "^3.2.0",
+    "animate.css": "^3.5.2",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0"
+  }
+}
